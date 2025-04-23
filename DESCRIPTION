@@ -3,8 +3,9 @@ Title: Allows students to keep track of their grade per semester/week
 Version: 0.0.0.9000
 Authors@R: 
     person("Nafisa", "Ahmed", , "nahmed@smith.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-    person("Alina", "Yildirim", "Ayildirim@smith.edu", role = c("aut", "cre"),
+
+    person("Alina", "Yildirim", , "first.last@example.com", role = c("aut", "cre"),
+
     comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: This is a package helps stuents track and visualize their grades.
 It also allows them to also compare their class performances to one another. 
