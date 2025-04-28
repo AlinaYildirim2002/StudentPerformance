@@ -1,6 +1,7 @@
 Package: StudentPerformance
 Title: Allows students to keep track of their grade per semester/week
 Version: 0.0.0.9000
+<<<<<<< HEAD
 Authors@R: 
     person("Nafisa", "Ahmed", , "nahmed@smith.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -9,6 +10,13 @@ Authors@R:
 Description: This is a package helps students track and visualize their grades.
  It also allows them to also compare their class performances to one another. 
 License: MIT + file LICENSE
+=======
+Authors@R:
+  person("Alina", "Yildirim", email = "ayildirim@smith.edu", role = c("aut", "cre")
+Description: This package helps students track and visualize their grades.
+    It also allows them to compare their class performances to one another.
+License: MIT
+>>>>>>> eeb20d05a605a06d4a0359aae742fe60f0a0d6d9
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
