@@ -1,10 +1,4 @@
 
-
-initial_data <- data.frame(
-  Name = "Alice",
-  Score = 92
-)
-
 # Create a sample student dataset
 initial_data <- data.frame(
   Date = as.Date(c("2025-03-01", "2025-03-05", "2025-03-10")),
@@ -16,7 +10,6 @@ initial_data <- data.frame(
   Semester = c("Spring 2025")
 
 )
-
 
 
 # Save it in my project folder
