@@ -44,3 +44,33 @@ compare_monthly <- function(data) {
 #compare_weekly(student_data)
 #compare_monthly(student_data)
 
+#' Average Grade by Course
+#' @export
+average_grade_by_course <- function(data) {
+  aggregate(Score ~ Subject, data = data, FUN = mean)
+}
+
+#' Total Study Hours by Course
+#' @export
+total_study_hours_by_course <- function(data) {
+  aggregate(StudyHours ~ Subject, data = data, FUN = sum)
+}
+
+#' Summary Statistics by Course
+#' @export
+course_summary_stats <- function(data) {
+  stats <- aggregate(cbind(Score, StudyHours) ~ Subject, data = data, function(x) {
+    c(mean = mean(x), median = median(x), min = min(x), max = max(x))
+  })
+
+  flat_stats <- do.call(data.frame, stats)
+  colnames(flat_stats) <- c(
+    "Subject",
+    "Grade_Mean", "Grade_Median", "Grade_Min", "Grade_Max",
+    "Hours_Mean", "Hours_Median", "Hours_Min", "Hours_Max"
+  )
+
+  return(flat_stats)
+}
+
+
