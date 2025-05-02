@@ -37,12 +37,7 @@ compare_monthly <- function(data) {
     theme_minimal()
 }
 
-#After running that
-#Run:
-#source("Code/analyze_trends.R")  # adjust if you're already in the Code folder
-#student_data <- read_student_data("student_data.csv")
-#compare_weekly(student_data)
-#compare_monthly(student_data)
+
 
 #' Average Score by Course
 #' @export
@@ -72,5 +67,13 @@ course_summary_stats <- function(data) {
 
   return(flat_stats)
 }
-
+#After running that
+#Run:
+#source("Code/analyze_trends.R")  # adjust if you're already in the Code folder
+#student_data <- read_student_data("student_data.csv")
+#compare_weekly(student_data)
+#compare_monthly(student_data)
+#average_score_by_course(student_data)
+#total_study_hours_by_course(student_data)
+#course_summary_stats(student_data)
 

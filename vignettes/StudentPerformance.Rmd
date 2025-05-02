@@ -1,0 +1,92 @@
+---
+title: "Using the StudentPerformance Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the StudentPerformance package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(StudentPerformance)
+```
+
+Tracking Academic Performance with StudentPerformance
+The StudentPerformance package provides tools for organizing, analyzing, and visualizing academic grades across multiple courses and timeframes.
+
+In this vignette, we'll walk through a real-world example of how a student might use the package to:
+
+1.Record their grades
+
+2.Analyze performance by course
+
+3.Compare course outcomes
+
+4.Identify trends over time
+
+Step 1: Create a Dataset
+Suppose a student wants to track their weekly scores in three different courses over five weeks.
+
+```{r}
+initial_data <- data.frame(
+  Date = as.Date(c("2025-03-01", "2025-03-05", "2025-03-10")),
+  Subject = c("Math", "Biology", "Physik"),
+  Category = c("Homework", "Exam", "Project"),
+  Score = c(85, 90, 92),
+  Total = c(100, 100, 100),
+  StudyHours = c(2, 4, 3),
+  Semester = c("Spring 2025")
+)
+
+```
+
+Step 2: Analyze Average Performance by Course
+A student may want to know which subject they are performing strongest in.
+
+```{r}
+average_score_by_course(student_data)
+```
+This function groups scores by subjct and returns the mean score for each subject.
+
+Step 3: Visualize Score Trends
+It can be helpful to visualize performance over time.
+
+
+```{r}
+ plot_gpa_over_time(student_data)
+```
+
+This would help identify whether performance is improving, declining, or consistent throughout the semester.
+
+Step 4: Compare Two Specific Subjects
+Maybe the student wants to compare how they’re doing in Math,Biology and Physics.
+
+```{r}
+course_summary_stats(student_data)
+```
+
+This comparison can help guide study strategies and time allocation.
+
+Step 5: Track Weekly Improvements
+A student may want to see whether there’s any improvement from Week 1 to Week 5 across all courses.
+
+```{r}
+library(dplyr)
+
+grades %>%
+  group_by(Week) %>%
+  summarise(Avg_Grade = mean(Grade))
+```
+
+
+A rising average could indicate that the student is improving overall, which is motivating.
+
+Summary
+The StudentPerformance package allows students to take control of their academic journey by making grade data meaningful. With the ability to group, compare, and visualize performance, it serves as both a tracker and a diagnostic tool for improving study habits and outcomes.
