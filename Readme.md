@@ -98,3 +98,7 @@ new_entry <- data.frame(
 - Add interactive Shiny dashboard
 - Export PDF summary reports
 - Handle multiple students
+
+<!-- badges: start -->
+  [![Codecov test coverage](https://codecov.io/gh/AlinaYildirim2002/StudentPerformance/graph/badge.svg)](https://app.codecov.io/gh/AlinaYildirim2002/StudentPerformance)
+<!-- badges: end -->

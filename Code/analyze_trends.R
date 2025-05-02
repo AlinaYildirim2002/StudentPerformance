@@ -44,9 +44,9 @@ compare_monthly <- function(data) {
 #compare_weekly(student_data)
 #compare_monthly(student_data)
 
-#' Average Grade by Course
+#' Average Score by Course
 #' @export
-average_grade_by_course <- function(data) {
+average_score_by_course <- function(data) {
   aggregate(Score ~ Subject, data = data, FUN = mean)
 }
 
