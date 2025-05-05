@@ -11,7 +11,7 @@ tracks progress by subject and assignment type.
 
 📂 Project Structure
 
-StudentPerformance/ ├── Code/ │ ├── grade_calc.R \# Functions for
+StudentPerformance/ ├── R/ │ ├── grade_calc.R \# Functions for
 calculating % score, letter grade, GPA │ ├── make_initial_data.R \#
 Script to create and export initial CSV data │ ├── data_io.R \#
 Read/write functions for the student_data.csv file │ ├── update_data.R
@@ -65,12 +65,12 @@ setwd("path/to/StudentPerformance")
 3.  Run Core Scripts
 
 ``` r
-source("Code/data_io.R")
-source("Code/grade_calc.R")
-source("Code/metrics.R")
-source("Code/update_data.R")        
-source("Code/analyze_trends.R")
-source("Code/plots.R")
+source("R/data_io.R")
+source("R/grade_calc.R")
+source("R/metrics.R")
+source("R/update_data.R")        
+source("R/analyze_trends.R")
+source("R/plots.R")
 ```
 
 4.  Load & Enrich Data

@@ -38,17 +38,22 @@ compare_monthly <- function(data) {
 }
 
 
-
-#' Average Score by Course
+#' Average score by course
+#'
+#' Calculates the average score grouped by subject.
+#'
+#' @param data A data frame with "Subject" and "Score" columns.
+#' @return A data frame with the average score per subject.
 #' @export
 average_score_by_course <- function(data) {
   aggregate(Score ~ Subject, data = data, FUN = mean)
 }
 
+
 #' Total Study Hours by Course
 #' @export
 total_study_hours_by_course <- function(data) {
-  aggregate(StudyHours ~ Subject, data = data, FUN = sum)
+  aggregate(StudyHours ~ Subject, data = data, sum)
 }
 
 #' Summary Statistics by Course
@@ -69,7 +74,7 @@ course_summary_stats <- function(data) {
 }
 #After running that
 #Run:
-#source("Code/analyze_trends.R")  # adjust if you're already in the Code folder
+#source("R/analyze_trends.R")  # adjust if you're already in the Code folder
 #student_data <- read_student_data("student_data.csv")
 #compare_weekly(student_data)
 #compare_monthly(student_data)
