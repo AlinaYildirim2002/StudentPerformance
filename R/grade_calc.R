@@ -1,11 +1,10 @@
-#' Calculate Percentage Score
-#' @export
+# Calculate Percentage Score
+
 calc_percentage <- function(score, total) {
   round(score / total * 100, 2)
 }
 
-#' Map Percentage to Letter Grade
-#' @export
+# Map Percentage to Letter Grade
 letter_grade <- function(percentage) {
   cut(percentage, breaks = c(-Inf, 60, 70, 80, 90, 100),
       labels = c("F", "D", "C", "B", "A"))

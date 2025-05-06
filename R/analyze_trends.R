@@ -3,8 +3,8 @@ library(dplyr)
 library(lubridate)
 library(ggplot2)
 
-#' Compare Weekly Performance
-#' @export
+#Compare Weekly Performance
+
 compare_weekly <- function(data) {
   data %>%
     mutate(
@@ -38,20 +38,15 @@ compare_monthly <- function(data) {
 }
 
 
-#' Average score by course
-#'
-#' Calculates the average score grouped by subject.
-#'
-#' @param data A data frame with "Subject" and "Score" columns.
-#' @return A data frame with the average score per subject.
-#' @export
+#Average score by course
+
 average_score_by_course <- function(data) {
   aggregate(Score ~ Subject, data = data, FUN = mean)
 }
 
 
-#' Total Study Hours by Course
-#' @export
+#Total Study Hours by Course
+
 total_study_hours_by_course <- function(data) {
   aggregate(StudyHours ~ Subject, data = data, sum)
 }

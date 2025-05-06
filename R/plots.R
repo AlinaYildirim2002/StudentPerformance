@@ -29,8 +29,7 @@ plot_score_by_category <- function(data) {
     theme_minimal()
 }
 
-#' Plot: Study Hours vs Score
-#' @export
+# Hours vs score
 plot_hours_vs_score <- function(data) {
   ggplot(data, aes(x = StudyHours, y = Score, color = Subject)) +
     geom_point(size = 3, alpha = 0.7) +
