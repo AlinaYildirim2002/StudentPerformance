@@ -1,4 +1,3 @@
-
 add_metrics <- function(data) {
   data$Percentage <- calc_percentage(data$Score, data$Total)
   data$GPA <- calc_gpa(data$Percentage)
