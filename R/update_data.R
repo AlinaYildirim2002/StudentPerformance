@@ -1,5 +1,3 @@
-source("R/data_io.R")
-
 student_data <- read_student_data()
 
 new_entry <- data.frame(
@@ -12,6 +10,9 @@ new_entry <- data.frame(
   Semester = "Spring 2025",
   stringsAsFactors = FALSE
 )
+
+updated_data <- rbind(student_data, new_entry)
+write_student_data(updated_data)
 
 new_entries <- data.frame(
   Date = as.Date(c("2025-04-04", "2025-04-10", "2025-04-15")),
@@ -26,9 +27,3 @@ new_entries <- data.frame(
 
 updated_data <- rbind(student_data, new_entries)
 write_student_data(updated_data)
-
-
-updated_data <- rbind(student_data, new_entry)
-write_student_data(updated_data)
-
-#After running save it and run: source("R/update_data.R")

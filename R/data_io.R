@@ -22,6 +22,4 @@ write_student_data <- function(data, path = "student_data.csv") {
 }
 
 
-#weekly, monthly comparison, plots
-
 

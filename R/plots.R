@@ -37,10 +37,3 @@ plot_hours_vs_score <- function(data) {
     labs(title = "Study Hours vs. Score by Subject", x = "Study Hours", y = "Score") +
     theme_minimal()
 }
-
-#Then run in console:
-# Run all your plots
-#plot_gpa_over_time(student_data)
-#plot_cumulative_gpa(student_data)
-#plot_score_by_category(student_data)
-#plot_study_hours_vs_score(student_data)
