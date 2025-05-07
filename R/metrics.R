@@ -1,4 +1,3 @@
-source("R/grade_calc.R")
 
 add_metrics <- function(data) {
   data$Percentage <- calc_percentage(data$Score, data$Total)
@@ -6,9 +5,3 @@ add_metrics <- function(data) {
   data$CumulativeGPA <- cummean(data$GPA)
   return(data)
 }
-
-#Then run in console:
-#source("R/metrics.R")
-#student_data <- read_student_data()
-#student_data <- add_metrics(student_data)
-
