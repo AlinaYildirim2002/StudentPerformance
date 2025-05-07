@@ -17,57 +17,65 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(StudentPerformance)
 ```
+
 ## Reading Student Data
-Use read_student_data() to import student performance data from a CSV file. 
+Use `read_student_data()` to import student performance data from a CSV file. This function reads a specified file if it exists or returns an empty data frame if the file is missing.
+
 ```{r}
 data <- read_student_data("student_data.csv")
 head(data)
-
 ```
 
-# OR
-# Use sample data (if not reading from a file)
+### Creating Sample Data (Optional)
+If you don't have a data file yet, you can create sample data to explore the package functionality:
 
 ```{r}
-# Create sample data
 data <- data.frame(
-  StudentID = 1:10,
-  Subject = rep(c("Math", "Science", "History"), length.out = 10),
-  Score = c(85, 92, 75, 88, 95, 60, 78, 89, 80, 91),
-  StudyHours = c(3.5,2,4,2,3,1,5,3,2,1),
-  Total = rep(100, 10),
-  Date = as.Date('2023-01-01') + 0:9
+  Date = as.Date(c("2025-04-01", "2025-04-04", "2025-04-10")),
+  Subject = c("Math", "Biology", "Math"),
+  Category = c("Exam", "Project", "Homework"),
+  Score = c(88, 91, 76),
+  Total = c(100, 100, 100),
+  StudyHours = c(3.5, 3.5, 2.5),
+  Semester = c("Spring 2025", "Spring 2025", "Spring 2025"),
+  stringsAsFactors = FALSE
 )
+head(data)
 ```
 
-
-
-
-
-## Calculating GPA
-Use calc_gpa() to compute a student’s GPA using grade and credit columns.
-
+## Adding Performance Metrics
+Use `add_metrics()` to add calculated performance metrics to your data, including Percentage, GPA, and Cumulative GPA.
 
 ```{r}
-# Calculate GPA for each student based on their percentage score
-data$GPA <- calc_gpa(calc_percentage(data$Score, data$Total))
-print(data)
-
+data <- add_metrics(data)
+head(data)
 ```
-## Comparing Monthly Performance
-Use compare_monthly() to examine how scores change over different months.
 
+## Writing Student Data
+Use `write_student_data()` to save your updated data back to a CSV file.
+
+```{r}
+write_student_data(data, "student_data.csv")
+```
+
+## Comparing Monthly Performance
+Use `compare_monthly()` to examine how scores change over different months.
 
 ```{r}
 compare_monthly(data)
-
 ```
 
 ## Course Summary Statistics
-Use course_summary_stats() to get descriptive statistics for scores across different courses.
+Use `course_summary_stats()` to get descriptive statistics for scores across different courses.
 
 ```{r}
-
 course_summary_stats(data)
+```
 
+## Visualizing Weekly and Monthly Trends
+Generate weekly and monthly comparison plots to visualize your progress over time. These functions provide quick insights into study patterns and performance.
+
+```{r}
+plot_weekly_comparison(data)
+plot_monthly_comparison(data)
 ```
