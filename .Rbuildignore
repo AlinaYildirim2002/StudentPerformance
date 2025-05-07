@@ -1,2 +1,6 @@
 ^StudentPerformance\.Rproj$
 ^\.Rproj\.user$
+^\.github$
+^README\.Rmd$
+^doc$
+^Meta$

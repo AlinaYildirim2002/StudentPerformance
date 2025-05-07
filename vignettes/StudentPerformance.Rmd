@@ -1,0 +1,73 @@
+---
+title: "Using the StudentPerformance Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the StudentPerformance package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(StudentPerformance)
+```
+## Reading Student Data
+Use read_student_data() to import student performance data from a CSV file. 
+```{r}
+data <- read_student_data("student_data.csv")
+head(data)
+
+```
+
+# OR
+# Use sample data (if not reading from a file)
+
+```{r}
+# Create sample data
+data <- data.frame(
+  StudentID = 1:10,
+  Subject = rep(c("Math", "Science", "History"), length.out = 10),
+  Score = c(85, 92, 75, 88, 95, 60, 78, 89, 80, 91),
+  StudyHours = c(3.5,2,4,2,3,1,5,3,2,1),
+  Total = rep(100, 10),
+  Date = as.Date('2023-01-01') + 0:9
+)
+```
+
+
+
+
+
+## Calculating GPA
+Use calc_gpa() to compute a student’s GPA using grade and credit columns.
+
+
+```{r}
+# Calculate GPA for each student based on their percentage score
+data$GPA <- calc_gpa(calc_percentage(data$Score, data$Total))
+print(data)
+
+```
+## Comparing Monthly Performance
+Use compare_monthly() to examine how scores change over different months.
+
+
+```{r}
+compare_monthly(data)
+
+```
+
+## Course Summary Statistics
+Use course_summary_stats() to get descriptive statistics for scores across different courses.
+
+```{r}
+
+course_summary_stats(data)
+
+```

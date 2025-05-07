@@ -1,8 +1,9 @@
 Package: StudentPerformance
 Title: Allows students to keep track of their grade per semester/week
 Version: 0.0.0.9000
-Authors@R:
-  person("Alina", "Yildirim", email = "ayildirim@smith.edu", role = c("aut", "cre")
+Authors@R: 
+    person("Nafisa", "Ahmed" , ,"nahmed@smith.edu", role = c("aut", "cre"))
+    person("Alina", "Yildirim", , "Ayildirim@smith.edu", role = c("aut", "cre"))
 Description: This package helps students track and visualize their grades.
     It also allows them to compare their class performances to one another.
 License: MIT
@@ -11,3 +12,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 URL: https://github.com/AlinaYildirim2002/StudentPerformance
 BugReports: https://github.com/AlinaYildirim2002/StudentPerformance/issues
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
