@@ -1,5 +1,3 @@
-source("R/data_io.R")
-
 student_data <- read_student_data()
 
 new_entry <- data.frame(
@@ -30,5 +28,3 @@ write_student_data(updated_data)
 
 updated_data <- rbind(student_data, new_entry)
 write_student_data(updated_data)
-
-#After running save it and run: source("R/update_data.R")
