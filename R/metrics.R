@@ -4,3 +4,4 @@ add_metrics <- function(data) {
   data$CumulativeGPA <- cummean(data$GPA)
   return(data)
 }
+

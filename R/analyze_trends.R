@@ -44,7 +44,6 @@ average_score_by_course <- function(data) {
   aggregate(Score ~ Subject, data = data, FUN = mean)
 }
 
-
 #Total Study Hours by Course
 
 total_study_hours_by_course <- function(data) {
@@ -67,5 +66,3 @@ course_summary_stats <- function(data) {
 
   return(flat_stats)
 }
-
-

@@ -11,6 +11,9 @@ new_entry <- data.frame(
   stringsAsFactors = FALSE
 )
 
+updated_data <- rbind(student_data, new_entry)
+write_student_data(updated_data)
+
 new_entries <- data.frame(
   Date = as.Date(c("2025-04-04", "2025-04-10", "2025-04-15")),
   Subject = c("Biology", "Math", "Physics"),
@@ -23,8 +26,4 @@ new_entries <- data.frame(
 )
 
 updated_data <- rbind(student_data, new_entries)
-write_student_data(updated_data)
-
-
-updated_data <- rbind(student_data, new_entry)
 write_student_data(updated_data)

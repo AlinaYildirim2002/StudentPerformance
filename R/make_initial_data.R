@@ -18,3 +18,4 @@ write.csv(initial_data, "student_data.csv", row.names = FALSE)
 
 
 
+
