@@ -17,7 +17,6 @@ plot_cumulative_gpa <- function(data) {
     labs(title = "Cumulative GPA Progress", x = "Date", y = "Cumulative GPA") +
     theme_minimal()
 }
-
 # Score by Category
 plot_score_by_category <- function(data) {
   data %>%

@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(StudentPerformance)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
 ```
 
 ## Reading Student Data
@@ -43,20 +46,7 @@ data <- data.frame(
 head(data)
 ```
 
-## Adding Performance Metrics
-Use `add_metrics()` to add calculated performance metrics to your data, including Percentage, GPA, and Cumulative GPA.
 
-```{r}
-data <- add_metrics(data)
-head(data)
-```
-
-## Writing Student Data
-Use `write_student_data()` to save your updated data back to a CSV file.
-
-```{r}
-write_student_data(data, "student_data.csv")
-```
 
 ## Comparing Monthly Performance
 Use `compare_monthly()` to examine how scores change over different months.
@@ -72,10 +62,5 @@ Use `course_summary_stats()` to get descriptive statistics for scores across dif
 course_summary_stats(data)
 ```
 
-## Visualizing Weekly and Monthly Trends
-Generate weekly and monthly comparison plots to visualize your progress over time. These functions provide quick insights into study patterns and performance.
 
-```{r}
-plot_weekly_comparison(data)
-plot_monthly_comparison(data)
-```
+

@@ -62,10 +62,15 @@ total_study_hours_by_course <- function(data) {
 
 #' @title Summary Statistics by Course
 #' @description
-#' Take a data.frame with \code{Subject}, \code{Score} and \code{StudyHours},
-#' compute mean, median, min and max of each by \code{Subject}, and return the results.
+#' Summarize Score and StudyHours by Subject, returning mean, median, min, and max values.
 #'
-#' @return A data.frame of summary stats (mean, median, min, max) for Score and StudyHours by Subject.
+#' @param data A data.frame with columns \code{Subject}, \code{Score}, and \code{StudyHours}.
+#' @return A data.frame with one row per Subject and columns:
+#'   \itemize{
+#'     \item \code{Subject}
+#'     \item \code{Grade_Mean}, \code{Grade_Median}, \code{Grade_Min}, \code{Grade_Max}
+#'     \item \code{Hours_Mean}, \code{Hours_Median}, \code{Hours_Min}, \code{Hours_Max}
+#'   }
 #' @examples
 #' course_summary_stats(
 #'   data.frame(
@@ -74,7 +79,6 @@ total_study_hours_by_course <- function(data) {
 #'     StudyHours = c(5, 4, 7)
 #'   )
 #' )
-#' course_summary_stats(data.frame)
 #' @export
 course_summary_stats <- function(data) {
   stats <- aggregate(
@@ -92,16 +96,3 @@ course_summary_stats <- function(data) {
 
   flat_stats
 }
-
-
-#After running that
-#Run:
-#source("R/analyze_trends.R")  # adjust if you're already in the Code folder
-#student_data <- read_student_data("student_data.csv")
-#compare_weekly(student_data)
-#compare_monthly(student_data)
-#average_score_by_course(student_data)
-#total_study_hours_by_course(student_data)
-#course_summary_stats(student_data)
-
-
