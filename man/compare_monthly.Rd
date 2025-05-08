@@ -6,16 +6,26 @@
 \usage{
 compare_monthly(data)
 }
+\arguments{
+\item{data}{A data frame containing student performance data with the following columns:
+\describe{
+  \item{\code{Date}}{A Date or date-time column representing the date of the record.}
+  \item{\code{Score}}{Numeric column representing points earned.}
+  \item{\code{Total}}{Numeric column representing points possible.}
+}}
+}
 \value{
-A ggplot bar chart (months on the x-axis, average percent on the y-axis).
+A ggplot line chart (months on the x-axis, average percent on the y-axis).
 }
 \description{
-Take a data.frame that has
-\code{Date} (any date or date‐time column),
-\code{Score} (points earned) and
-\code{Total} (points possible),
-compute each month’s average percent score, and draw a bar chart.
+Takes a data frame that contains Date (any date or date‐time column), Score (points earned), and Total (points possible), computes each month’s average percent score, and draws a line chart.
 }
 \examples{
-compare_monthly(data)
+# Example data
+sample_data <- data.frame(
+  Date = as.Date(c("2025-01-15", "2025-02-15", "2025-03-15")),
+  Score = c(80, 85, 90),
+  Total = c(100, 100, 100)
+)
+compare_monthly(sample_data)
 }
