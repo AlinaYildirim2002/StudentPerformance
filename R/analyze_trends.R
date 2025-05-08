@@ -27,20 +27,22 @@ compare_weekly <- function(data) {
 #' @param data A data frame containing student performance data.
 #' @return A ggplot object showing monthly performance.
 #' @examples
-#' compare_monthly(my_student_data)
+#' # Example data
+#' my_data <- data.frame(
+#'   Date = as.Date(c("2023-01-01", "2023-02-01", "2023-03-01")),
+#'   Score = c(80, 85, 90),
+#'   Total = c(100, 100, 100)
+#' )
+#' compare_monthly(my_data)
 compare_monthly <- function(data) {
-  data %>%
-    mutate(
-      Date = as.Date(Date),
-      Month = month(Date, label = TRUE),
-      Percentage = calc_percentage(Score, Total)
-    ) %>%
-    group_by(Month) %>%
-    summarize(AverageScore = mean(Percentage), .groups = "drop") %>%
-    ggplot(aes(x = Month, y = AverageScore)) +
-    geom_col(fill = "darkorange") +
-    labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
-    theme_minimal()
+    data %>%
+        group_by(Month = format(Date, "%Y-%m")) %>%
+        summarize(
+            AverageScore = mean(Score / Total * 100, na.rm = TRUE)
+        ) %>%
+        ggplot(aes(x = Month, y = AverageScore)) +
+        geom_line() +
+        theme_minimal()
 }
 
 
