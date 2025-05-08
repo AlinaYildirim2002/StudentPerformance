@@ -46,21 +46,23 @@ compare_weekly <- function(data) {
 #' @return A ggplot object showing monthly performance.
 #' @export
 compare_monthly <- function(data) {
-  # Ensure Date is properly formatted
-  data <- data %>%
-    mutate(Date = as.Date(Date)) %>%
-    mutate(Month = format(Date, "%Y-%m"))
-  
-  data %>%
-    group_by(Month) %>%
-    summarize(
-      AverageScore = mean(Score / Total * 100, na.rm = TRUE),
-      .groups = "drop"
-    ) %>%
-    ggplot(aes(x = Month, y = AverageScore)) +
-    geom_line(color = "steelblue") +
-    labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
-    theme_minimal()
+    required_columns <- c("Date", "Score", "Total")
+    if (!all(required_columns %in% colnames(data))) {
+        stop("Error: The data must contain the following columns: Date, Score, Total")
+    }
+
+    data %>%
+        mutate(Date = as.Date(Date)) %>%
+        mutate(Month = format(Date, "%Y-%m")) %>%
+        group_by(Month) %>%
+        summarize(
+            AverageScore = mean(Score / Total * 100, na.rm = TRUE),
+            .groups = "drop"
+        ) %>%
+        ggplot(aes(x = Month, y = AverageScore)) +
+        geom_line(color = "steelblue") +
+        labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
+        theme_minimal()
 }
 
 #' Average Score by Course
