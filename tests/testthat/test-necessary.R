@@ -1,55 +1,60 @@
 library(testthat)
 library(StudentPerformance)
-# Test calc_gpa()
+library(ggplot2)  #We have to load ggplot2 explicitly to avoid errors
+
+# Testing calc_gpa()
 test_that("calc_gpa() computes correct GPA", {
   percentages <- c(95, 85, 75, 65, 55)
   expect_equal(calc_gpa(percentages), c(4.0, 3.0, 2.0, 1.0, 0.0))
 
-  # Test edge cases
+  # Testing edge cases
   expect_equal(calc_gpa(c(90, 100)), c(4.0, 4.0))
   expect_equal(calc_gpa(c(89, 79, 69, 59)), c(3.0, 2.0, 1.0, 0.0))
 
-  # Test empty input
+  # Testing empty input
   expect_equal(calc_gpa(numeric()), numeric())
 })
 
-# Test compare_monthly()
+# Testing compare_monthly()
 test_that("compare_monthly() returns correct monthly averages", {
   data <- data.frame(
     Date = as.Date(c("2025-01-15", "2025-02-15", "2025-03-15", "2025-04-15")),
     Score = c(85, 90, 95, 100),
     Total = c(100, 100, 100, 100)
   )
+  
+  # Testing valid data
   result <- compare_monthly(data)
-  expect_s3_class(result, "ggplot")  # Check if the result is a ggplot object
+  expect_s3_class(result, "gg")  # Check if the result is a ggplot object
 
-  # Test with empty data
-  expect_error(compare_monthly(data.frame()))
+  # Testing with empty data (should error)
+  expect_error(compare_monthly(data.frame()), "must contain the following columns")
 
-  # Test with missing columns
-  expect_error(compare_monthly(data.frame(Date = as.Date(c("2025-01-15")))))
+  # Testing with missing columns
+  expect_error(compare_monthly(data.frame(Date = as.Date(c("2025-01-15")))), "must contain the following columns")
 })
 
-# Test course_summary_stats()
+# Testing course_summary_stats()
 test_that("course_summary_stats() calculates correct stats", {
   data <- data.frame(
     Subject = c("Math", "Biology", "Physics"),
     Score = c(90, 85, 92),
     StudyHours = c(4, 3, 5)
   )
+  
   result <- course_summary_stats(data)
   expect_equal(nrow(result), 3)
   expect_equal(ncol(result), 9)
   expect_true(all(c("Grade_Mean", "Hours_Mean") %in% colnames(result)))
 
-  # Test with empty data frame (should error)
-  expect_error(course_summary_stats(data.frame()))
+  # Testing with empty data frame (should error)
+  expect_error(course_summary_stats(data.frame()), "no rows to aggregate")
 
-  # Test with non-numeric column (should error)
-  expect_error(course_summary_stats(data.frame(Score = c("A", "B", "C"), StudyHours = c("X", "Y", "Z"))))
+  # Testing with non-numeric column (should error)
+  expect_error(course_summary_stats(data.frame(Subject = c("Math"), Score = c("A"), StudyHours = c("X"))), "argument is not numeric or logical")
 })
 
-# Test read_student_data()
+# Testing read_student_data()
 test_that("read_student_data() reads data correctly", {
   sample_data <- "sample_student_data.csv"
   write.csv(data.frame(
@@ -67,9 +72,11 @@ test_that("read_student_data() reads data correctly", {
   expect_equal(ncol(df), 7)
   expect_equal(df$Subject[1], "Math")
 
-  # Test with non-existent file (should return empty data frame)
-  expect_equal(nrow(read_student_data("non_existent.csv")), 0)
+  # Testing with non-existent file (should return empty data frame)
+  empty_df <- read_student_data("non_existent.csv")
+  expect_equal(nrow(empty_df), 0)
+  expect_equal(ncol(empty_df), 7)
 
-  # Clean up test file
+  # Cleaning up test file
   file.remove(sample_data)
 })
