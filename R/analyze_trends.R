@@ -3,7 +3,7 @@ library(dplyr)
 library(lubridate)
 library(ggplot2)
 
-# Declare global variables to avoid R CMD check warnings
+# Declaring global variables to avoid R CMD errors
 utils::globalVariables(c("Date", "Month", "Score", "Total", "Week", "Percentage", "AverageScore", "Subject"))
 
 # Calculate Percentage
@@ -46,8 +46,12 @@ compare_weekly <- function(data) {
 #' @return A ggplot object showing monthly performance.
 #' @export
 compare_monthly <- function(data) {
+  # Ensure Date is properly formatted
+  data <- data %>%
+    mutate(Date = as.Date(Date)) %>%
+    mutate(Month = format(Date, "%Y-%m"))
+  
   data %>%
-    mutate(Month = format(Date, "%Y-%m")) %>%
     group_by(Month) %>%
     summarize(
       AverageScore = mean(Score / Total * 100, na.rm = TRUE),
