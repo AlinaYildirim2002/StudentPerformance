@@ -40,15 +40,7 @@ jobs:
 
       - name: Install Required Packages
         run: |
-          Rscript -e "install.packages(c(
-            'devtools',
-            'knitr',
-            'rmarkdown',
-            'testthat',
-            'lubridate',
-            'ggplot2',
-            'dplyr'
-          ))"
+          Rscript -e "install.packages(c('devtools', 'knitr', 'rmarkdown', 'testthat', 'lubridate', 'ggplot2', 'dplyr'))"
 
       - uses: r-lib/actions/check-r-package@v2
         with:
