@@ -21,7 +21,13 @@ compare_weekly <- function(data) {
 }
 
 #' Compare Monthly Performance
-#' @export
+#'
+#' This function compares the monthly performance of students.
+#'
+#' @param data A data frame containing student performance data.
+#' @return A ggplot object showing monthly performance.
+#' @examples
+#' compare_monthly(my_student_data)
 compare_monthly <- function(data) {
   data %>%
     mutate(
