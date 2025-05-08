@@ -2,8 +2,10 @@ Package: StudentPerformance
 Title: Student Performance Tracking Package
 Version: 0.0.0.9000
 Authors@R: 
-    person("Nafisa", "Ahmed", email = "nahmed@smith.edu", role = c("aut", "cre")),
-    person("Alina", "Yildirim", email = "ayildirim@smith.edu", role = c("aut", "cre"))
+    c(
+        person("Nafisa", "Ahmed", email = "nahmed@smith.edu", role = c("aut", "cre")),
+        person("Alina", "Yildirim", email = "ayildirim@smith.edu", role = c("aut", "cre"))
+    )
 Description: This package helps students track and visualize their grades.
     It also allows them to compare their class performances to one another.
 License: MIT
