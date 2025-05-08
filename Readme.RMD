@@ -23,7 +23,6 @@ Track and summarize academic performance with modular R functions. This package 
 
 * **calc\_gpa()**: Convert percentage scores to a 4.0 GPA scale.
 * **read\_student\_data()**: Load (or initialize) your `student_data.csv` into R.
-* **compare\_monthly()**: Plot monthly average percentage scores.
 * **course\_summary\_stats()**: Generate mean/median/min/max summaries of Score and StudyHours by Subject.
 
 
@@ -43,9 +42,6 @@ Install the development version from GitHub:
 
 # Load your data (or get an empty template)
 student_data <- read_student_data("student_data.csv")
-
-# Visualize monthly trends
-compare_monthly(student_data)
 
 # Get summary statistics by course
 course_summary_stats(student_data)
