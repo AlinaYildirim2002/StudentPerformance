@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     c(
         person("Alina", "Yildirim", email = "ayildirim@smith.edu", role = c("aut", "cre")),
-        person("Nafisa", "Ahmed", email = "nahmed@smith.edu", role = c("aut", "cre"))
+        person("Nafisa", "Ahmed", email = "nahmed@smith.edu", role = c("aut"))
     )
 Description: This package helps students track and visualize their grades.
     It also allows them to compare their class performances to one another.
