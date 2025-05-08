@@ -1,42 +1,32 @@
----
-
 title: "Using the StudentPerformance Package"
-output: rmarkdown::html\_vignette
+output: rmarkdown::html_vignette
 vignette: >
 %\VignetteIndexEntry{Using the StudentPerformance package}
 %\VignetteEngine{knitr::rmarkdown}
 %\VignetteEncoding{UTF-8}
--------------------------
 
-```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
 
-```{r setup}
 library(devtools)
 devtools::load_all()
 library(dplyr)
 library(lubridate)
 library(ggplot2)
-```
 
-## Reading Student Data
+Reading Student Data
 
-Use `read_student_data()` to import student performance data from a CSV file. This function reads a specified file if it exists or returns an empty data frame if the file is missing.
+Use read_student_data() to import student performance data from a CSV file. This function reads a specified file if it exists or returns an empty data frame if the file is missing.
 
-```{r}
 data <- read_student_data("student_data.csv")
 head(data)
-```
 
-### Creating Sample Data (Optional)
+Creating Sample Data (Optional)
 
 If you don't have a data file yet, you can create sample data to explore the package functionality:
 
-```{r}
 data <- data.frame(
   Date = as.Date(c("2025-04-01", "2025-04-04", "2025-04-10")),
   Subject = c("Math", "Biology", "Math"),
@@ -48,38 +38,35 @@ data <- data.frame(
   stringsAsFactors = FALSE
 )
 head(data)
-```
 
-## Course Summary Statistics
+Course Summary Statistics
 
-Use `course_summary_stats()` to get descriptive statistics for scores across different courses.
+Use course_summary_stats() to get descriptive statistics for scores across different courses.
 
-```{r}
 course_summary_stats(data)
-```
 
-## Calculating GPA
+Calculating GPA
 
-To calculate GPA for each student, use the `calc_gpa()` function.
+To calculate GPA for each student, use the calc_gpa() function.
 
-```{r}
 data$GPA <- calc_gpa(calc_percentage(data$Score, data$Total))
 head(data)
-```
 
-## Adding Cumulative GPA
+Adding Cumulative GPA
 
-If you want to track cumulative GPA over time, use the `add_metrics()` function.
+If you want to track cumulative GPA over time, use the add_metrics() function.
 
-```{r}
 data <- add_metrics(data)
 head(data)
-```
 
-## Saving Your Data
+Comparing Monthly Performance
 
-You can save your updated data to a CSV file with `write_student_data()`.
+To visualize monthly performance trends, use the compare_monthly() function.
 
-```{r}
+compare_monthly(data)
+
+Saving Your Data
+
+You can save your updated data to a CSV file with write_student_data().
+
 write_student_data(data, "updated_student_data.csv")
-```
