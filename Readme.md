@@ -12,7 +12,7 @@ StudentPerformance/
 │   ├── data_io.R # Read/write functions for the student_data.csv file  
 │   ├── update_data.R # Adds new entries to the dataset  
 │   ├── metrics.R # Adds percentage, GPA, and cumulative GPA  
-│   ├── analyze_trends.R # Weekly trend analysis  
+│   ├── analyze_trends.R # Weekly and Monthly trend analysis  
 ├── student_data.csv # Main dataset storing student records  
 └── README.md # Project overview and usage instructions  
 ```
@@ -21,7 +21,7 @@ StudentPerformance/
 
 * **Calculate:** Percentage, Letter Grade, GPA, and Cumulative GPA
 * **Update:** Append new rows to your dataset with a script
-* **Analyze:** Weekly average score comparisons
+* **Analyze:** Weekly and monthly average score comparisons
 * **Visualize:** GPA Over Time, Average Score by Assignment Category
 
 ## 📦 Requirements
@@ -73,6 +73,7 @@ student_data <- add_metrics(student_data)
 
 ```r
 course_summary_stats(student_data)
+compare_monthly(student_data)
 ```
 
 ### Save Your Data
