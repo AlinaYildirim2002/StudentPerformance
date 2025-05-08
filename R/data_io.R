@@ -1,6 +1,7 @@
 #' Read Student Data
 #'
 #' @param path The path to the CSV file containing student data.
+#' @return A data frame with student data.
 #' @export
 read_student_data <- function(path = "student_data.csv") {
   if (file.exists(path)) {
@@ -24,10 +25,6 @@ read_student_data <- function(path = "student_data.csv") {
 write_student_data <- function(data, path = "student_data.csv") {
   write.csv(data, path, row.names = FALSE)
 }
-
-
-
-# weekly, monthly comparison, plots
 
 
 
