@@ -6,4 +6,5 @@ importFrom(utils, "read.csv", "write.csv")
 
 export(calc_gpa)
 export(course_summary_stats)
+export(compare_monthly)
 export(read_student_data)
