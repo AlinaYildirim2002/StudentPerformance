@@ -1,11 +1,6 @@
-#' @title Read Student Data
-#' @description
-#' Load student performance data from a CSV file (default `"student_data.csv"`).
-#' If the file is missing, returns an empty data.frame with the expected columns.
+#' Read Student Data
 #'
-#' @return A data.frame with columns Date, Subject, Category, Score, Total, StudyHours, Semester.
-#' @examples
-#' read_student_data()
+#' @param path The path to the CSV file containing student data.
 #' @export
 read_student_data <- function(path = "student_data.csv") {
   if (file.exists(path)) {
