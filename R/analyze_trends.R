@@ -26,25 +26,6 @@ compare_weekly <- function(data) {
 }
 
 
-#' Compare Monthly Performance
-#'
-#' @param data A data frame containing student performance data.
-#' @return A ggplot object showing average monthly performance.
-#' @export
-compare_monthly <- function(data) {
-  data %>%
-    mutate(
-      Date = as.Date(Date),
-      Month = month(Date, label = TRUE),
-      Percentage = calc_percentage(Score, Total)
-    ) %>%
-    group_by(Month) %>%
-    summarize(AverageScore = mean(Percentage), .groups = "drop") %>%
-    ggplot(aes(x = Month, y = AverageScore)) +
-    geom_col(fill = "darkorange") +
-    labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
-    theme_minimal()
-}
 
 #Average score by course
 
