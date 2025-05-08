@@ -20,19 +20,14 @@ compare_weekly <- function(data) {
     theme_minimal()
 }
 
-
-#' @title Compare Monthly Performance
-#' @description
-#' Take a data.frame that has
-#' \code{Date} (any date or date‐time column),
-#' \code{Score} (points earned) and
-#' \code{Total} (points possible),
-#' compute each month’s average percent score, and draw a bar chart.
+#' Compare Monthly Performance
 #'
-#' @return A ggplot bar chart (months on the x-axis, average percent on the y-axis).
+#' This function compares the monthly performance of students.
+#'
+#' @param data A data frame containing student performance data.
+#' @return A ggplot object showing monthly performance.
 #' @examples
-#' compare_monthly(data)
-#' @export
+#' compare_monthly(my_student_data)
 compare_monthly <- function(data) {
   data %>%
     mutate(
@@ -47,6 +42,8 @@ compare_monthly <- function(data) {
     labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
     theme_minimal()
 }
+
+
 
 #Average score by course
 

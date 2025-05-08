@@ -1,24 +1,22 @@
-#' @title Read Student Data
-#' @description
-#' Load student performance data from a CSV file (default `"student_data.csv"`).
-#' If the file is missing, returns an empty data.frame with the expected columns.
+#' Read Student Data
 #'
-#' @return A data.frame with columns Date, Subject, Category, Score, Total, StudyHours, Semester.
-#' @examples
-#' read_student_data()
+#' Reads student performance data from a specified CSV file.
+#'
+#' @param path The file path to the student data CSV. Defaults to "student_data.csv".
+#' @return A data frame with student performance data.
 #' @export
 read_student_data <- function(path = "student_data.csv") {
   if (file.exists(path)) {
     read.csv(path, stringsAsFactors = FALSE)
   } else {
     data.frame(
-      Date       = as.Date(character()),
-      Subject    = character(),
-      Category   = character(),
-      Score      = numeric(),
-      Total      = numeric(),
+      Date = as.Date(character()),
+      Subject = character(),
+      Category = character(),
+      Score = numeric(),
+      Total = numeric(),
       StudyHours = numeric(),
-      Semester   = character(),
+      Semester = character(),
       stringsAsFactors = FALSE
     )
   }
@@ -29,10 +27,6 @@ read_student_data <- function(path = "student_data.csv") {
 write_student_data <- function(data, path = "student_data.csv") {
   write.csv(data, path, row.names = FALSE)
 }
-
-
-
-# weekly, monthly comparison, plots
 
 
 
