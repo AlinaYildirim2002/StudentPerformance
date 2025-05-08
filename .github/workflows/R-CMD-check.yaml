@@ -1,4 +1,4 @@
-name: R-CMD-check.yaml
+name: R-CMD-check
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Install Required Packages
         run: |
-          install.packages(c(
+          R -e 'install.packages(c(
             "devtools",
             "knitr",
             "rmarkdown",
@@ -48,7 +48,7 @@ jobs:
             "lubridate",
             "ggplot2",
             "dplyr"
-          ))
+          ))'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
