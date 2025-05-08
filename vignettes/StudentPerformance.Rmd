@@ -50,18 +50,36 @@ data <- data.frame(
 head(data)
 ```
 
-## Comparing Monthly Performance
-
-Use `compare_monthly()` to examine how scores change over different months.
-
-```{r}
-compare_monthly(data)
-```
-
 ## Course Summary Statistics
 
 Use `course_summary_stats()` to get descriptive statistics for scores across different courses.
 
 ```{r}
 course_summary_stats(data)
+```
+
+## Calculating GPA
+
+To calculate GPA for each student, use the `calc_gpa()` function.
+
+```{r}
+data$GPA <- calc_gpa(calc_percentage(data$Score, data$Total))
+head(data)
+```
+
+## Adding Cumulative GPA
+
+If you want to track cumulative GPA over time, use the `add_metrics()` function.
+
+```{r}
+data <- add_metrics(data)
+head(data)
+```
+
+## Saving Your Data
+
+You can save your updated data to a CSV file with `write_student_data()`.
+
+```{r}
+write_student_data(data, "updated_student_data.csv")
 ```
