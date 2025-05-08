@@ -1,8 +1,3 @@
-#' @importFrom utils globalVariables
-
-utils::globalVariables(c("Date", "Score", "Total", "Week", "Month", "Percentage", "AverageScore"))
-
-
 # Load necessary libraries
 library(dplyr)
 library(lubridate)
