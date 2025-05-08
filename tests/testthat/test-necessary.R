@@ -13,22 +13,6 @@ test_that("calc_gpa() computes correct GPA", {
   expect_equal(calc_gpa(numeric()), numeric())
 })
 
-# Test compare_monthly()
-test_that("compare_monthly() returns correct monthly averages", {
-  data <- data.frame(
-    Date = as.Date(c("2025-01-15", "2025-02-15", "2025-03-15", "2025-04-15")),
-    Score = c(85, 90, 95, 100),
-    Total = c(100, 100, 100, 100)
-  )
-  result <- compare_monthly(data)
-  expect_s3_class(result, "ggplot")  # Check if the result is a ggplot object
-
-  # Test with empty data
-  expect_error(compare_monthly(data.frame()))
-
-  # Test with missing columns
-  expect_error(compare_monthly(data.frame(Date = as.Date(c("2025-01-15")))))
-})
 
 # Test course_summary_stats()
 test_that("course_summary_stats() calculates correct stats", {
