@@ -47,8 +47,8 @@ test_that("course_summary_stats() calculates correct stats", {
   expect_equal(ncol(result), 9)
   expect_true(all(c("Grade_Mean", "Hours_Mean") %in% colnames(result)))
 
-  # Testing with empty data frame (should error)
-  expect_error(course_summary_stats(data.frame()), "no rows to aggregate")
+  # Testing with empty data frame with required columns (should error)
+  expect_error(course_summary_stats(data.frame(Subject = character(), Score = numeric(), StudyHours = numeric())), "no rows to aggregate")
 
   # Testing with non-numeric column (should error)
   expect_error(course_summary_stats(data.frame(Subject = c("Math"), Score = c("A"), StudyHours = c("X"))), "argument is not numeric or logical")
