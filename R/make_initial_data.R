@@ -2,7 +2,7 @@
 # Create a sample student dataset
 initial_data <- data.frame(
   Date = as.Date(c("2025-03-01", "2025-03-05", "2025-03-10")),
-  Subject = c("Math", "Biology", "Physik"),
+  Subject = c("Math", "Biology", "Physics"),
   Category = c("Homework", "Exam", "Project"),
   Score = c(85, 90, 92),
   Total = c(100, 100, 100),

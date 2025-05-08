@@ -6,6 +6,16 @@
 \usage{
 compare_monthly(data)
 }
+\value{
+A ggplot bar chart (months on the x-axis, average percent on the y-axis).
+}
 \description{
-Compare Monthly Performance
+Take a data.frame that has
+\code{Date} (any date or date‐time column),
+\code{Score} (points earned) and
+\code{Total} (points possible),
+compute each month’s average percent score, and draw a bar chart.
+}
+\examples{
+compare_monthly(data)
 }

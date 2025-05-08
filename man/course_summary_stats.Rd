@@ -6,6 +6,20 @@
 \usage{
 course_summary_stats(data)
 }
+\value{
+A data.frame of summary stats (mean, median, min, max) for Score and StudyHours by Subject.
+}
 \description{
-Summary Statistics by Course
+Take a data.frame with \code{Subject}, \code{Score} and \code{StudyHours},
+compute mean, median, min and max of each by \code{Subject}, and return the results.
+}
+\examples{
+course_summary_stats(
+  data.frame(
+    Subject    = c("Math", "Eng", "Sci"),
+    Score      = c(85, 78, 92),
+    StudyHours = c(5, 4, 7)
+  )
+)
+course_summary_stats(data.frame)
 }
