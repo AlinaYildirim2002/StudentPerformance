@@ -25,6 +25,23 @@ compare_weekly <- function(data) {
     theme_minimal()
 }
 
+#' Compare Monthly Performance
+#' @export
+compare_monthly <- function(data) {
+  data %>%
+    mutate(
+      Date = as.Date(Date),
+      Month = month(Date, label = TRUE),
+      Percentage = calc_percentage(Score, Total)
+    ) %>%
+    group_by(Month) %>%
+    summarize(AverageScore = mean(Percentage), .groups = "drop") %>%
+    ggplot(aes(x = Month, y = AverageScore)) +
+    geom_col(fill = "darkorange") +
+    labs(title = "Monthly Average Score", x = "Month", y = "Average % Score") +
+    theme_minimal()
+}
+
 
 
 #Average score by course
