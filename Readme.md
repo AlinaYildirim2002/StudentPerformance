@@ -1,72 +1,91 @@
+# StudentPerformance 📘
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+Track and visualize academic performance over time with modular R scripts. This project calculates GPA, provides summary statistics, and tracks progress by subject and assignment type.
 
-# StudentPerformance
+## 📂 Project Structure
 
-<!-- badges: start -->
+```
+StudentPerformance/  
+├── R/  
+│   ├── grade_calc.R # Functions for calculating % score, letter grade, GPA  
+│   ├── make_initial_data.R # Script to create and export initial CSV data  
+│   ├── data_io.R # Read/write functions for the student_data.csv file  
+│   ├── update_data.R # Adds new entries to the dataset  
+│   ├── metrics.R # Adds percentage, GPA, and cumulative GPA  
+│   ├── analyze_trends.R # Weekly trend analysis  
+├── student_data.csv # Main dataset storing student records  
+└── README.md # Project overview and usage instructions  
+```
 
-[![R-CMD-check](https://github.com/AlinaYildirim2002/StudentPerformance/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AlinaYildirim2002/StudentPerformance/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/AlinaYildirim2002/StudentPerformance/graph/badge.svg)](https://app.codecov.io/gh/AlinaYildirim2002/StudentPerformance)
-<!-- badges: end --> 📘 **Student Performance Tracker**
+## 📊 Features
 
-Track and summarize academic performance with modular R functions. This
-package provides:
+* **Calculate:** Percentage, Letter Grade, GPA, and Cumulative GPA
+* **Update:** Append new rows to your dataset with a script
+* **Analyze:** Weekly average score comparisons
+* **Visualize:** GPA Over Time, Average Score by Assignment Category
 
-- **calc_gpa()**: Convert percentage scores to a 4.0 GPA scale.
-- **read_student_data()**: Load (or initialize) your `student_data.csv`
-  into R.
-- **compare_monthly()**: Plot monthly average percentage scores.
-- **course_summary_stats()**: Generate mean/median/min/max summaries of
-  Score and StudyHours by Subject.
+## 📦 Requirements
 
-## 📦 Installation
+* R (≥ 4.0)
+* R packages:
 
-``` r
+  * dplyr
+  * ggplot2
+  * lubridate
+
+Install packages if needed:
+
+```r
+install.packages(c("dplyr", "ggplot2", "lubridate"))
+```
+
+## 🚀 How to Use
+
+### Installation
+
+You can install the development version of StudentPerformance from GitHub with:
+
+```r
 # install.packages("devtools")
 devtools::install_github("AlinaYildirim2002/StudentPerformance")
+```
 
-Install the development version from GitHub:
+### Set Working Directory in R
 
+```r
+setwd("path/to/StudentPerformance")
+```
 
-## 🚀 Quick Start
+### Run Core Scripts
 
+```r
+devtools::load_all()
+```
 
-``` r
+### Load & Enrich Data
 
+```r
+student_data <- read_student_data()
+student_data <- add_metrics(student_data)
+```
 
-# Load your data (or get an empty template)
-student_data <- read_student_data("student_data.csv")
+### Run Summary Statistics
 
-# Visualize monthly trends
-compare_monthly(student_data)
-
-# Get summary statistics by course
+```r
 course_summary_stats(student_data)
 ```
 
-## 🧠 Add Sample Entry
+### Save Your Data
 
-``` r
-new_entry <- data.frame(
-  Date       = as.Date("2025-04-10"),
-  Subject    = "Math",
-  Category   = "Exam",
-  Score      = 88,
-  Total      = 100,
-  StudyHours = 3.5,
-  Semester   = "Spring 2025"
-)
+```r
+write_student_data(student_data, "updated_student_data.csv")
 ```
-
-Run `read_student_data()` again or write back with your own I/O function
-to include `new_entry` in the CSV.
 
 ## 🛠️ Future Ideas
 
-- Interactive Shiny dashboard
-- PDF summary reports
-- Multi‑student support
+* Add interactive Shiny dashboard
+* Export PDF summary reports
+* Handle multiple students
+* Improve test coverage
 
-> **Goal:** Help students and educators track, compare, and visualize
-> academic performance with a few simple R commands.
+The goal of **StudentPerformance** is to help students track and visualize their grades and compare class performance across subjects.
