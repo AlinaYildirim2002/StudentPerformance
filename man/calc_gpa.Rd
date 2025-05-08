@@ -6,6 +6,16 @@
 \usage{
 calc_gpa(percentage)
 }
+\arguments{
+\item{percentage}{Numeric vector of percentages.}
+}
+\value{
+Numeric vector of GPAs (0.0–4.0) corresponding to each input percentage.
+}
 \description{
-Convert Percentage to GPA
+Translate a numeric percentage (0–100) into a 4.0-scale GPA.
+}
+\examples{
+calc_gpa(c(92, 85, 74, 59))
+
 }

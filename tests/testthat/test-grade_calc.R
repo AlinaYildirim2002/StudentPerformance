@@ -1,7 +1,8 @@
 library(testthat)
+library(StudentPerformance)
 
 # Load the function definitions
-source("grade_calc.R")
+
 
 test_that("calc_percentage calculates correct values", {
   expect_equal(calc_percentage(50, 100), 50)

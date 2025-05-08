@@ -20,7 +20,18 @@ compare_weekly <- function(data) {
     theme_minimal()
 }
 
-#' Compare Monthly Performance
+
+#' @title Compare Monthly Performance
+#' @description
+#' Take a data.frame that has
+#' \code{Date} (any date or date‐time column),
+#' \code{Score} (points earned) and
+#' \code{Total} (points possible),
+#' compute each month’s average percent score, and draw a bar chart.
+#'
+#' @return A ggplot bar chart (months on the x-axis, average percent on the y-axis).
+#' @examples
+#' compare_monthly(data)
 #' @export
 compare_monthly <- function(data) {
   data %>%
@@ -37,7 +48,6 @@ compare_monthly <- function(data) {
     theme_minimal()
 }
 
-
 #Average score by course
 
 average_score_by_course <- function(data) {
@@ -50,19 +60,39 @@ total_study_hours_by_course <- function(data) {
   aggregate(StudyHours ~ Subject, data = data, sum)
 }
 
-#' Summary Statistics by Course
+#' @title Summary Statistics by Course
+#' @description
+#' Summarize Score and StudyHours by Subject, returning mean, median, min, and max values.
+#'
+#' @param data A data.frame with columns \code{Subject}, \code{Score}, and \code{StudyHours}.
+#' @return A data.frame with one row per Subject and columns:
+#'   \itemize{
+#'     \item \code{Subject}
+#'     \item \code{Grade_Mean}, \code{Grade_Median}, \code{Grade_Min}, \code{Grade_Max}
+#'     \item \code{Hours_Mean}, \code{Hours_Median}, \code{Hours_Min}, \code{Hours_Max}
+#'   }
+#' @examples
+#' course_summary_stats(
+#'   data.frame(
+#'     Subject    = c("Math", "Eng", "Sci"),
+#'     Score      = c(85, 78, 92),
+#'     StudyHours = c(5, 4, 7)
+#'   )
+#' )
 #' @export
 course_summary_stats <- function(data) {
-  stats <- aggregate(cbind(Score, StudyHours) ~ Subject, data = data, function(x) {
-    c(mean = mean(x), median = median(x), min = min(x), max = max(x))
-  })
+  stats <- aggregate(
+    cbind(Score, StudyHours) ~ Subject,
+    data = data,
+    function(x) c(mean = mean(x), median = median(x), min = min(x), max = max(x))
+  )
 
   flat_stats <- do.call(data.frame, stats)
   colnames(flat_stats) <- c(
     "Subject",
-    "Grade_Mean", "Grade_Median", "Grade_Min", "Grade_Max",
-    "Hours_Mean", "Hours_Median", "Hours_Min", "Hours_Max"
+    "Grade_Mean",  "Grade_Median",  "Grade_Min",  "Grade_Max",
+    "Hours_Mean",  "Hours_Median",  "Hours_Min",  "Hours_Max"
   )
 
-  return(flat_stats)
+  flat_stats
 }

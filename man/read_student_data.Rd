@@ -6,6 +6,13 @@
 \usage{
 read_student_data(path = "student_data.csv")
 }
+\value{
+A data.frame with columns Date, Subject, Category, Score, Total, StudyHours, Semester.
+}
 \description{
-Read Student Data
+Load student performance data from a CSV file (default \code{"student_data.csv"}).
+If the file is missing, returns an empty data.frame with the expected columns.
+}
+\examples{
+read_student_data()
 }

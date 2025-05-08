@@ -1,11 +1,12 @@
 ---
+
 title: "Using the StudentPerformance Package"
-output: rmarkdown::html_vignette
+output: rmarkdown::html\_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the StudentPerformance package}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
+%\VignetteIndexEntry{Using the StudentPerformance package}
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteEncoding{UTF-8}
+-------------------------
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -15,10 +16,15 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(StudentPerformance)
+library(devtools)
+devtools::load_all()
+library(dplyr)
+library(lubridate)
+library(ggplot2)
 ```
 
 ## Reading Student Data
+
 Use `read_student_data()` to import student performance data from a CSV file. This function reads a specified file if it exists or returns an empty data frame if the file is missing.
 
 ```{r}
@@ -27,6 +33,7 @@ head(data)
 ```
 
 ### Creating Sample Data (Optional)
+
 If you don't have a data file yet, you can create sample data to explore the package functionality:
 
 ```{r}
@@ -43,22 +50,8 @@ data <- data.frame(
 head(data)
 ```
 
-## Adding Performance Metrics
-Use `add_metrics()` to add calculated performance metrics to your data, including Percentage, GPA, and Cumulative GPA.
-
-```{r}
-data <- add_metrics(data)
-head(data)
-```
-
-## Writing Student Data
-Use `write_student_data()` to save your updated data back to a CSV file.
-
-```{r}
-write_student_data(data, "student_data.csv")
-```
-
 ## Comparing Monthly Performance
+
 Use `compare_monthly()` to examine how scores change over different months.
 
 ```{r}
@@ -66,16 +59,9 @@ compare_monthly(data)
 ```
 
 ## Course Summary Statistics
+
 Use `course_summary_stats()` to get descriptive statistics for scores across different courses.
 
 ```{r}
 course_summary_stats(data)
-```
-
-## Visualizing Weekly and Monthly Trends
-Generate weekly and monthly comparison plots to visualize your progress over time. These functions provide quick insights into study patterns and performance.
-
-```{r}
-plot_weekly_comparison(data)
-plot_monthly_comparison(data)
 ```

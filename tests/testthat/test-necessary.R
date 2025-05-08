@@ -1,5 +1,5 @@
 library(testthat)
-
+library(StudentPerformance)
 # Test calc_gpa()
 test_that("calc_gpa() computes correct GPA", {
   percentages <- c(95, 85, 75, 65, 55)

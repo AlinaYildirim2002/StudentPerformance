@@ -6,6 +6,26 @@
 \usage{
 course_summary_stats(data)
 }
+\arguments{
+\item{data}{A data.frame with columns \code{Subject}, \code{Score}, and \code{StudyHours}.}
+}
+\value{
+A data.frame with one row per Subject and columns:
+\itemize{
+\item \code{Subject}
+\item \code{Grade_Mean}, \code{Grade_Median}, \code{Grade_Min}, \code{Grade_Max}
+\item \code{Hours_Mean}, \code{Hours_Median}, \code{Hours_Min}, \code{Hours_Max}
+}
+}
 \description{
-Summary Statistics by Course
+Summarize Score and StudyHours by Subject, returning mean, median, min, and max values.
+}
+\examples{
+course_summary_stats(
+  data.frame(
+    Subject    = c("Math", "Eng", "Sci"),
+    Score      = c(85, 78, 92),
+    StudyHours = c(5, 4, 7)
+  )
+)
 }
