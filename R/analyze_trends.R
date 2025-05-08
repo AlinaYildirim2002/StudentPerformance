@@ -1,3 +1,8 @@
+#' @importFrom utils globalVariables
+
+utils::globalVariables(c("Date", "Score", "Total", "Week", "Month", "Percentage", "AverageScore"))
+
+
 # Load necessary libraries
 library(dplyr)
 library(lubridate)
@@ -24,6 +29,7 @@ compare_weekly <- function(data) {
 #' Compare Monthly Performance
 #'
 #' @param data A data frame containing student performance data.
+#' @return A ggplot object showing average monthly performance.
 #' @export
 compare_monthly <- function(data) {
   data %>%
