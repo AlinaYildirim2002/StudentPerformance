@@ -1,20 +1,22 @@
 #' Read Student Data
 #'
-#' @param path The path to the CSV file containing student data.
-#' @return A data frame with student data.
+#' Reads student performance data from a specified CSV file.
+#'
+#' @param path The file path to the student data CSV. Defaults to "student_data.csv".
+#' @return A data frame with student performance data.
 #' @export
 read_student_data <- function(path = "student_data.csv") {
   if (file.exists(path)) {
     read.csv(path, stringsAsFactors = FALSE)
   } else {
     data.frame(
-      Date       = as.Date(character()),
-      Subject    = character(),
-      Category   = character(),
-      Score      = numeric(),
-      Total      = numeric(),
+      Date = as.Date(character()),
+      Subject = character(),
+      Category = character(),
+      Score = numeric(),
+      Total = numeric(),
       StudyHours = numeric(),
-      Semester   = character(),
+      Semester = character(),
       stringsAsFactors = FALSE
     )
   }
