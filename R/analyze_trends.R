@@ -1,49 +1,27 @@
-# Load necessary libraries
-library(dplyr)
-library(lubridate)
-library(ggplot2)
+##Compare Monthly
 
-# Declaring global variables to avoid R CMD errors
-utils::globalVariables(c("Date", "Month", "Score", "Total", "Week", "Percentage", "AverageScore", "Subject"))
-
-# Calculate Percentage
-# We had to include more conditionals due to failed CMD checks
-calc_percentage <- function(score, total) {
-  if (is.numeric(score) && is.numeric(total) && length(score) == length(total)) {
-    return((score / total) * 100)
-  } else {
-    stop("Both 'score' and 'total' must be numeric vectors of the same length.")
-  }
-}
-
-#' Compare Weekly Performance
+#' @title Compare Monthly Performance
+#' @description
+#' Take a data.frame that has
+#' \code{Date} (any date or date‐time column),
+#' \code{Score} (points earned) and
+#' \code{Total} (points possible),
+#' compute each month’s average percent score, and draw a bar chart.
 #'
-#' This function compares the weekly performance of students.
-#'
-#' @param data A data frame containing student performance data.
-#' @return A ggplot object showing weekly performance.
-#' @export
-compare_weekly <- function(data) {
-  data %>%
-    mutate(
-      Date = as.Date(Date),
-      Week = isoweek(Date),
-      Percentage = calc_percentage(Score, Total)
-    ) %>%
-    group_by(Week) %>%
-    summarize(AverageScore = mean(Percentage, na.rm = TRUE), .groups = "drop") %>%
-    ggplot(aes(x = Week, y = AverageScore)) +
-    geom_col(fill = "steelblue") +
-    labs(title = "Weekly Average Score", x = "Week of Year", y = "Average % Score") +
-    theme_minimal()
-}
-
-#' Compare Monthly Performance
-#'
-#' This function compares the monthly performance of students.
-#'
-#' @param data A data frame containing student performance data.
-#' @return A ggplot object showing monthly performance.
+#' @param data A data.frame with columns \code{Date}, \code{Score}, \code{Total}.
+#' @importFrom magrittr %>%
+#' @importFrom ggplot2 ggplot aes geom_line geom_point labs theme_minimal
+#' @importFrom dplyr mutate group_by summarize
+#' @importFrom lubridate month
+#' @return A ggplot bar chart (months on the x-axis, average percent on the y-axis).
+#' @examples
+#' compare_monthly(
+#'   data.frame(
+#'     Date  = as.Date(c("2025-01-01", "2025-01-15")),
+#'     Score = c(50, 100),
+#'     Total = c(100, 100)
+#'   )
+#' )
 #' @export
 compare_monthly <- function(data) {
     required_columns <- c("Date", "Score", "Total")
@@ -65,34 +43,28 @@ compare_monthly <- function(data) {
         theme_minimal()
 }
 
-#' Average Score by Course
-#'
-#' This function calculates the average score for each course.
-#'
-#' @param data A data frame containing student performance data.
-#' @return A data frame with average scores by course.
-#' @export
-average_score_by_course <- function(data) {
-  aggregate(Score ~ Subject, data = data, FUN = mean)
-}
 
-#' Total Study Hours by Course
-#'
-#' This function calculates the total study hours for each course.
-#'
-#' @param data A data frame containing student performance data.
-#' @return A data frame with total study hours by course.
-#' @export
-total_study_hours_by_course <- function(data) {
-  aggregate(StudyHours ~ Subject, data = data, sum)
-}
 
-#' Summary Statistics by Course
+## Summary Stats
+#' @title Summary Statistics by Course
+#' @description Summarize Score and StudyHours by Subject, returning mean, median, min, and max values.
 #'
-#' Summarize Score and StudyHours by Subject, returning mean, median, min, and max values.
-#'
-#' @param data A data frame with columns "Subject", "Score", and "StudyHours".
-#' @return A data frame with summary statistics by course.
+#' @importFrom stats aggregate median
+#' @param data A data.frame with columns \code{Subject}, \code{Score}, and \code{StudyHours}.
+#' @return A data.frame with one row per Subject and columns:
+#'   \itemize{
+#'     \item \code{Subject}
+#'     \item \code{Grade_Mean}, \code{Grade_Median}, \code{Grade_Min}, \code{Grade_Max}
+#'     \item \code{Hours_Mean}, \code{Hours_Median}, \code{Hours_Min}, \code{Hours_Max}
+#'   }
+#' @examples
+#' course_summary_stats(
+#'   data.frame(
+#'     Subject    = c("Math", "Eng", "Sci"),
+#'     Score      = c(85, 78, 92),
+#'     StudyHours = c(5, 4, 7)
+#'   )
+#' )
 #' @export
 course_summary_stats <- function(data) {
   stats <- aggregate(

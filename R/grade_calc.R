@@ -4,17 +4,13 @@ calc_percentage <- function(score, total) {
   round(score / total * 100, 2)
 }
 
-# Map Percentage to Letter Grade
-letter_grade <- function(percentage) {
-  cut(percentage, breaks = c(-Inf, 60, 70, 80, 90, 100),
-      labels = c("F", "D", "C", "B", "A"))
-}
 
-
+##GPA Convertor
 #' @title Convert Percentage to GPA
 #' @description
 #' Translate a numeric percentage (0–100) into a 4.0-scale GPA.
 #'
+#' @importFrom dplyr case_when
 #' @param percentage Numeric vector of percentages.
 #' @return Numeric vector of GPAs (0.0–4.0) corresponding to each input percentage.
 #' @examples

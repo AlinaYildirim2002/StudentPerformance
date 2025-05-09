@@ -1,9 +1,15 @@
-#' Read Student Data
+
+##Read Student Data
+#' @title Read Student Data
+#' @description
+#' Load student performance data from a CSV file (default `"student_data.csv"`).
+#' If the file is missing, returns an empty data.frame with the expected columns.
 #'
-#' Reads student performance data from a specified CSV file.
-#'
-#' @param path The file path to the student data CSV file. Defaults to "student_data.csv".
-#' @return A data frame containing student performance data, with columns for Date, Subject, Category, Score, Total, StudyHours, and Semester.
+#' @param path Character scalar: path to the CSV file (default \"student_data.csv\").
+#' @importFrom utils read.csv write.csv
+#' @return A data.frame with columns Date, Subject, Category, Score, Total, StudyHours, Semester.
+#' @examples
+#' read_student_data()
 #' @export
 read_student_data <- function(path = "student_data.csv") {
   if (file.exists(path)) {
@@ -21,10 +27,10 @@ read_student_data <- function(path = "student_data.csv") {
     )
   }
 }
+## Write Student Data
 
-#' Write Student Data
-#'
-#' Writes student performance data to a specified CSV file.
+#' @title Write Student Data
+#' @description Writes student performance data to a specified CSV file.
 #'
 #' @param data A data frame containing student performance data.
 #' @param path The file path to save the student data CSV file. Defaults to "student_data.csv".
@@ -35,3 +41,5 @@ write_student_data <- function(data, path = "student_data.csv") {
   }
   write.csv(data, path, row.names = FALSE)
 }
+
+

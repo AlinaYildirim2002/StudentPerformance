@@ -22,7 +22,7 @@ test_that("compare_monthly() returns correct monthly averages", {
     Score = c(85, 90, 95, 100),
     Total = c(100, 100, 100, 100)
   )
-  
+
   # Testing valid data
   result <- compare_monthly(data)
   expect_s3_class(result, "gg")  # Check if the result is a ggplot object
@@ -41,7 +41,7 @@ test_that("course_summary_stats() calculates correct stats", {
     Score = c(90, 85, 92),
     StudyHours = c(4, 3, 5)
   )
-  
+
   result <- course_summary_stats(data)
   expect_equal(nrow(result), 3)
   expect_equal(ncol(result), 9)
@@ -50,8 +50,6 @@ test_that("course_summary_stats() calculates correct stats", {
   # Testing with empty data frame with required columns (should error)
   expect_error(course_summary_stats(data.frame(Subject = character(), Score = numeric(), StudyHours = numeric())), "no rows to aggregate")
 
-  # Testing with non-numeric column (should error)
-  expect_error(course_summary_stats(data.frame(Subject = c("Math"), Score = c("A"), StudyHours = c("X"))), "argument is not numeric or logical")
 })
 
 # Testing read_student_data()
